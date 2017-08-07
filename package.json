@@ -1,0 +1,30 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "You can test the application by opening index.html",
+  "keywords": [],
+  "author": "Dimitar",
+  "dependencies": {
+    "mocha": "^3.4.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "express": "^4.15.3",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.4.2",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "mocha": "^3.5.0",
+    "request": "^2.81.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha test.js"
+  },
+  "main": "server.js",
+  "license": "ISC"
+}

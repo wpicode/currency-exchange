@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" media="all" href="/public/vendor/mocha.css">
+<link href="/public/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="/public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/public/css/main.min.css" rel="stylesheet" type="text/css" />
+<script src="/public/js/angular.js"></script>
+<script src="/public/js/jquery.js"></script>
+<script src="/public/js/tether.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/echarts.js"></script>
+<script src="/public/js/controllers.js"></script>
+
+<body class="blue-bg">
+
+	<div class="app-wrap" ng-app="myApp" >
+		<div ng-controller="myCtrl" class="container-fluid container {{headerClass}}">
+			<header class="header">
+				<div class="header-container row">
+					<div class="col-md-12">
+						<label class="pull-right " for="sort">Sort By: 
+								<select name="sort" class="form-control" ng-model="sort" >
+									<option value="currency">Currency A-Z</option>
+									<option value="-currency">Currency Z-A</option>
+									<option value="-rate">Rate (Highest)</option>
+									<option value="rate">Rate (Lowest)</option>
+									<option value="-perc">Percentage (Largest)</option>
+									<option value="perc">Percentage (Smallest)</option>
+								</select>
+						</label>
+						<h3>Currency Exchange</h3>	
+		    			<div id="main" class="{{mainClass}}" style="height:0; width:100%;"></div>	
+		    		</div>
+    			</div>			
+			</header>
+			<div class="clearfix"></div>
+			<div class="row" ng-show="results">
+				<div class="col-md-12">
+					
+					<table  class="table table-striped">
+						<thead  class="thead-default">
+							<tr>
+								<th>Currency</th>
+								<th>Exchange rate</th>
+								<th>Date</th>
+								<th>Percentage change (from previous day)</th>
+							</tr>
+						</thead>
+						<tbody>
+						    <tr ng-click="showChart(item.currency)" id="{{'currency-row-'+item.currency}}" class="{{item.highlight+' currency-row'}}" ng-repeat="(key,item) in results  | orderBy:sort | limitTo:400"   >
+						        
+						        <td>{{item.currency}}</td>
+						        <td>
+						        	<p>{{item.rates[9]}}</p>
+						        	<p>{{item.rates[8]}}</p>
+						        	<p>{{item.rates[7]}}</p>
+						        	<p>{{item.rates[6]}}</p>
+						        	<p>{{item.rates[5]}}</p>
+						        	<p>{{item.rates[4]}}</p>
+						        	<p>{{item.rates[3]}}</p>
+						        	<p>{{item.rates[2]}}</p>
+						        	<p>{{item.rates[1]}}</p>
+						        	<p>{{item.rates[0]}}</p>
+						        </td>
+						        <td>
+						        	<p>{{item.dates[9]}}</p>
+						        	<p>{{item.dates[8]}}</p>
+						        	<p>{{item.dates[7]}}</p>
+						        	<p>{{item.dates[6]}}</p>
+						        	<p>{{item.dates[5]}}</p>
+						        	<p>{{item.dates[4]}}</p>
+						        	<p>{{item.dates[3]}}</p>
+						        	<p>{{item.dates[2]}}</p>
+						        	<p>{{item.dates[1]}}</p>
+						        	<p>{{item.dates[0]}}</p>
+						        </td>
+   								<td>
+						        	<p> {{ (item.perc).toFixed(2) }}%</p>
+						        	
+						        </td>
+						   	</tr>
+						</tbody>   	
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
